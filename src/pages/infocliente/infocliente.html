@@ -1,0 +1,119 @@
+
+<ion-header>
+
+    <ion-navbar color="blue">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-1></ion-col>
+      
+        <img src="assets/imgs/logo2.png"/>
+       </ion-row>
+    </ion-grid>
+
+
+  
+    </ion-navbar>
+      
+  </ion-header>
+
+<ion-content padding>
+
+    <img src="assets/imgs/user.png" class="center"/>
+
+    <ion-card>
+   
+      <ion-card-content>
+        
+          <ion-grid>
+
+              <ion-row> 
+                  <ion-col col-6>
+                    <h5>Documento:</h5>
+                </ion-col>
+                
+                <ion-col col-6>
+                  <h5>{{ item.documento }}</h5>
+                </ion-col>
+              </ion-row> 
+
+              <ion-row>
+                <ion-col col-6>
+                  <h5>Nombres:</h5>
+                </ion-col>
+               
+                <ion-col col-6>
+                  <h5>{{ item.nombre }}</h5>
+                </ion-col>
+              </ion-row>
+
+              <ion-row> 
+                <ion-col col-6>
+                  <h5>Apellidos:</h5>
+              </ion-col>
+              
+              <ion-col col-6>
+                <h5>{{ item.apellido }}</h5>
+              </ion-col>
+            </ion-row>
+            
+            
+             
+            </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+
+               
+
+          
+                <br>
+                <h2 ion-text style="text-align: center;" color="secondary" >Préstamos</h2>  
+               <!-- <img src="assets/imgs/prestamos2.png" class="center"/> -->
+                
+               <ion-list>
+                <ion-item-sliding *ngFor="let pres of prest | async" icon-start  >
+                  <ion-item navPush="InfoprestamoPage" [navParams]="{pres:pres,item:item}">
+                      <ion-grid>
+                          <ion-row>
+                            <ion-col col-2>
+                              <img src="assets/imgs/dinero.png" right/>
+                            </ion-col>  
+                            <ion-col col-3>
+                              <h5>Cantidad </h5>
+                            </ion-col>
+                            <ion-col col-3></ion-col>
+                            <ion-col col-3 >
+                              <h5>${{pres.cantidad}}</h5>
+                            </ion-col>
+                          </ion-row>  
+                          <ion-row class="no-padding">
+                            <ion-col col-2></ion-col>
+                            <ion-col col-3>
+                              <h5>Cuotas</h5>
+                          </ion-col>
+                          <ion-col col-3></ion-col>
+                          <ion-col col-2>
+                            <h5>{{pres.cuota}}</h5>
+                          </ion-col>
+                        </ion-row> 
+                         
+                        </ion-grid>
+                  </ion-item>      
+                  <ion-item-options side="right">
+                      <button ion-button  color="danger" (click)="deleteConfirm(pres)" ><ion-icon name="trash"></ion-icon>
+                        Borrar
+                     </button>
+                     <button ion-button  color="primary" navPush="EditarprestamoPage" [navParams]="{pres:pres}" ><ion-icon name="create"></ion-icon>
+                      Editar
+                   </button>
+                  </ion-item-options>
+                </ion-item-sliding>
+              </ion-list>
+
+
+        <ion-fab right bottom>
+          <button ion-fab color="light" (click)="NuevoPrestamo()"><ion-icon name="add"></ion-icon></button>
+                  
+        </ion-fab>           
+
+</ion-content>

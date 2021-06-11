@@ -1,0 +1,90 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-1></ion-col>
+      
+        <img src="assets/imgs/logo2.png"/>
+       </ion-row>
+    </ion-grid>
+
+    <ion-buttons start>
+      <button ion-button icon-only (click)="presentConfirm()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+              <h2 ion-text style="text-align: center;" color="secondary" >Agregar Cliente</h2>
+               <!-- <img src="assets/imgs/nuevo_cliente2.png" class="center"/> -->
+    <ion-content>
+
+                <img src="assets/imgs/user.png" class="center"/>
+
+                        <ion-list>
+
+                            <ion-item>
+                                <ion-label floating>Número de Documento</ion-label>
+                                <ion-input  type="number" [(ngModel)]="cliente.documento" name="documento" #documento="ngModel" required digits ></ion-input>                             
+                            </ion-item>
+                            <div class="form-error" *ngIf="documento.errors && (documento.dirty || documento.touched)">
+                              <p color="danger" [hidden]="!documento.errors.required">Campo requerido.</p>
+                            </div>
+
+
+                            <ion-item>                             
+                              <ion-label floating>Nombres</ion-label>
+                              <ion-input  type="text" [(ngModel)]="cliente.nombre" name="nombre" #nombre="ngModel" pattern="[a-zA-Z]*" required></ion-input>
+                            </ion-item>
+                            <div class="form-error" *ngIf="nombre.errors && (nombre.dirty || nombre.touched)">
+                            <p color="danger" [hidden]="!nombre.errors.required">Campo requerido.</p>
+                            </div> 
+
+                            <ion-item>      
+                              <ion-label floating>Apellidos</ion-label>
+                              <ion-input  type="text" [(ngModel)]="cliente.apellido" name="apellido" #apellido="ngModel" pattern="[a-zA-Z]*" required></ion-input>
+                            </ion-item>
+                            <div class="form-error" *ngIf="apellido.errors && (apellido.dirty || apellido.touched)">
+                            <p color="danger" [hidden]="!apellido.errors.required">Campo requerido.</p>
+                            </div>
+
+
+                            <ion-item>
+                              <ion-label floating>Email</ion-label>
+                              <ion-input  type="email" [(ngModel)]="cliente.email" name="email" #email="ngModel" ></ion-input>
+                            </ion-item>
+                          
+
+                            <ion-item>
+                                <ion-label  floating>Telefono</ion-label>
+                                <ion-input  type="number" [(ngModel)]="cliente.telefono" name="telefono" #telefono="ngModel" required digits></ion-input>
+                            </ion-item>
+                            <div class="form-error" *ngIf="telefono.errors && (telefono.dirty || telefono.touched)">
+                                <p color="danger" [hidden]="!telefono.errors.required">Campo requerido.</p>
+                            </div>
+
+                            <ion-item>
+                                  <ion-label floating>Direccion</ion-label>
+                                  <ion-input  type="text" [(ngModel)]="cliente.direccion" name="direccion" #direccion="ngModel" required></ion-input>
+                            </ion-item>
+                            <div class="form-error" *ngIf="direccion.errors && (direccion.dirty || direccion.touched)">
+                                <p color="danger" [hidden]="!direccion.errors.required">Campo requerido.</p>
+                            </div>
+
+                            <ion-row >
+                          
+                            </ion-row>
+                          </ion-list>
+
+          <div padding>
+            <button ion-button block clear type="submit" round color="primary" (click)="addcliente(cliente)">Registrar</button>
+          </div>
+      </ion-content>
+</ion-content>

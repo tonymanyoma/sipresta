@@ -1,0 +1,57 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1></ion-col>
+    
+      <img src="assets/imgs/logo2.png"/>
+     </ion-row>
+  </ion-grid>
+
+ 
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h2 ion-text style="text-align: center;" color="secondary" >Listado de Clientes</h2>
+    <!--<img src="assets/imgs/listado_clientes2.png" class="center"/>-->
+    
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of cliente | async" icon-start>
+            <ion-item detail-push (press)="openNavDetailsPage(item)"  >
+          <ion-thumbnail item-left>
+            <img src="assets/imgs/user.png">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{item.nombre}}</h2>
+            <p>{{item.apellido }}</p>
+          </ion-label>
+    
+  
+          <ion-toggle item-right  checked="false" (ionChange)="archivarcliente(item)" ></ion-toggle>
+           </ion-item>
+
+           <ion-item-options side="right">
+              <button ion-button  color="danger"  (click)="deleteConfirm(item)"><ion-icon name="trash"></ion-icon>
+                Borrar
+             </button>
+             <button ion-button  color="primary" navPush="EditarclientesPage" [navParams]="{item:item}" ><ion-icon name="create"></ion-icon>
+              Editar
+           </button>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+
+    <ion-fab right bottom>
+      <button ion-fab color="light" (click)="infodetalles()"><ion-icon name="cash"></ion-icon></button>
+              
+    </ion-fab> 
+
+</ion-content>

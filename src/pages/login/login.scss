@@ -1,0 +1,20 @@
+page-login {
+
+    .bg-style {
+        background:#AFC9FB;
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .getstart {
+
+        background-image: src('assets/imgs/banner.jpg');
+        // background: url('../../img/getstart.png');
+        background-repeat: no-repeat;
+        background-size:cover;
+       }
+}

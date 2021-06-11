@@ -1,0 +1,66 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+      <ion-grid>
+          <ion-row>
+            <ion-col col-1></ion-col>
+        
+          <img src="assets/imgs/logo2.png"/>
+         </ion-row>
+      </ion-grid>
+
+
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="assets/imgs/dinero2.png" class="center"/>
+
+  <button ion-item *ngFor="let pres of prest | async" (click)="openPagosPage(item)" icon-start>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <img src="assets/imgs/dinero.png" right/>
+        </ion-col>  
+        <ion-col col-3>
+          <h5>Cantidad Prestada</h5>
+        </ion-col>
+        <ion-col col-3></ion-col>
+        <ion-col col-3>
+          <h5>${{pres.cantidad}}</h5>
+        </ion-col>
+      </ion-row>  
+      <ion-row class="no-padding">
+        <ion-col col-2></ion-col>
+        <ion-col col-3>
+          <h5>Número Cuotas</h5>
+      </ion-col>
+      <ion-col col-3></ion-col>
+      <ion-col col-2>
+        <h5>{{pres.cuota}}</h5>
+      </ion-col>
+    </ion-row> 
+    
+    <ion-row class="no-padding">
+        <ion-col col-2></ion-col>
+        <ion-col col-3>
+          <h5>Key</h5>
+      </ion-col>
+      <ion-col col-3></ion-col>
+      <ion-col col-2>
+        <h5>{{pres.key}}</h5>
+      </ion-col>
+    </ion-row> 
+    </ion-grid>
+  </button>  
+
+  <ion-fab right bottom>
+    <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>   
+  </ion-fab> 
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+
+ 
+
+</ion-header>
+
+  
+<ion-content padding class="getstart">
+
+    <br><br><br><br><br><br>
+  <img src="assets/imgs/logol.png" class="center"/>
+
+
+            <ion-item>
+                <ion-label floating>Correo</ion-label>
+                <ion-input type="email" round [(ngModel)]="user.email" name="email" #email="ngModel" required email></ion-input>
+            </ion-item>
+            <div class="form-error" *ngIf="email.errors && (email.dirty || email.touched)">
+              <p color="danger" [hidden]="!email.errors.required">Campo requerido.</p>
+            </div>
+
+            <ion-item>
+              <ion-label floating>Contraseña</ion-label>
+              <ion-input [type]="passwordType" round [(ngModel)]="user.password" name="password" #password="ngModel" required clearOnEdit="false"></ion-input>
+              <ion-icon name="eye" [color]="passwordShown === true ? 'dark' : 'gray'" item-end (click)="togglePassword()"></ion-icon>
+            </ion-item>
+            <div class="form-error" *ngIf="password.errors && (password.dirty || password.touched)">
+              <p color="danger" [hidden]="!password.errors.required">Campo requerido.</p>
+            </div>
+           
+            <br><br>
+            <div padding>
+              <button ion-button block  type="submit" round color="primary" (click)="login(user)" >Iniciar Sesión</button>
+            </div>
+  
+
+
+</ion-content>

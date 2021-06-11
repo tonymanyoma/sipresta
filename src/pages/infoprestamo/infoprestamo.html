@@ -1,0 +1,155 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+      <ion-grid>
+          <ion-row>
+            <ion-col col-1></ion-col>
+        
+          <img src="assets/imgs/logo2.png"/>
+         </ion-row>
+      </ion-grid>
+
+      
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/dinero2.png" class="center"/>
+
+    <ion-card>
+   
+        <ion-card-content>
+          
+            <ion-grid>
+
+                <ion-row> 
+                    <ion-col col-6>
+                      <h5>Fecha Préstamo:</h5>
+                  </ion-col>
+                  
+                  <ion-col col-6>
+                    <h5>{{pres.fecha}}</h5>
+                  </ion-col>
+                </ion-row> 
+
+                <ion-row>
+                  <ion-col col-6>
+                    <h5>Cantidad Prestada:</h5>
+                  </ion-col>
+                 
+                  <ion-col col-6>
+                    <h5>${{pres.cantidad}}</h5>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row> 
+                  <ion-col col-6>
+                    <h5>Número Cuotas:</h5>
+                </ion-col>
+                
+                <ion-col col-6>
+                  <h5>{{pres.cuota}}</h5>
+                </ion-col>
+              </ion-row>
+              
+              <ion-row> 
+                  <ion-col col-6>
+                    <h5>Intereses:</h5>
+                </ion-col>
+                
+                <ion-col col-6>
+                  <h5>${{pres.intereses}}</h5>
+                </ion-col>
+              </ion-row> 
+
+              <ion-row> 
+                <ion-col col-6>
+                  <h5>Días de pago:</h5>
+              </ion-col>
+              
+              <ion-col col-6>
+                <h5>{{pres.dias}}</h5>
+              </ion-col>
+            </ion-row> 
+
+            <ion-row> 
+              <ion-col col-6>
+                <h5>Valor de cuota:</h5>
+            </ion-col>
+            
+            <ion-col col-6>
+              <h5>${{pres.valor}}</h5>
+            </ion-col>
+          </ion-row> 
+        
+              
+              </ion-grid>
+        </ion-card-content>
+      </ion-card>
+
+      <br>
+
+      <h2 ion-text style="text-align: center;" color="secondary"  >Pagos</h2>  
+     <!-- <img src="assets/imgs/pagos.png" class="center"/> -->
+
+     <ion-list>
+        <ion-item-sliding #item *ngFor="let pag of pago | async"  >
+          <ion-item>
+              <ion-grid>
+                  <ion-row>
+                    <ion-col col-2>
+                      <img src="assets/imgs/bank.png" right/>
+                    </ion-col>  
+                    <ion-col col-3>
+                      <h5>Concepto Pago</h5>
+                    </ion-col>
+                    <ion-col col-3></ion-col>
+                    <ion-col col-3 >
+                      <h5>{{pag.concepto}}</h5>
+                    </ion-col>
+                  </ion-row>  
+                  <ion-row class="no-padding">
+                    <ion-col col-2></ion-col>
+                    <ion-col col-3>
+                      <h5>Cantidad</h5>
+                  </ion-col>
+                  <ion-col col-3></ion-col>
+                  <ion-col col-2>
+                    <h5>${{pag.cantidad}}</h5>
+                  </ion-col>
+                </ion-row> 
+                 
+                </ion-grid>
+          </ion-item>      
+          <ion-item-options side="right">
+              <button ion-button  color="danger" (click)="deleteConfirm(pag)" ><ion-icon name="trash"></ion-icon>
+                Borrar
+             </button>
+             <button ion-button  color="primary" navPush="EditarpagoPage" [navParams]="{pag:pag}" ><ion-icon name="create"></ion-icon>
+              Editar
+           </button>
+          </ion-item-options>
+
+          <ion-item-options side="left">
+            <button ion-button  color="secondary" (click)="createpdf(pag)" ><ion-icon name="print"></ion-icon>
+              Recibo
+           </button>
+          
+        </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+
+
+        <ion-fab right bottom>
+          <button ion-fab color="light"><ion-icon name="arrow-dropleft-circle"></ion-icon></button>
+          <ion-fab-list side="left">
+            <button ion-fab><ion-icon name="add" (click)="NuevoPago()"></ion-icon></button>
+            <button ion-fab><ion-icon name="help" (click)="detalleToast()"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
+ 
+</ion-content>

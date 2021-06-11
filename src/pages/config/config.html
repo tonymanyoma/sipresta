@@ -1,0 +1,71 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1></ion-col>
+    
+      <img src="assets/imgs/logo2.png"/>
+     </ion-row>
+  </ion-grid>
+
+    </ion-navbar>
+  
+  </ion-header>
+
+
+  <ion-content padding>
+
+    <img src="assets/imgs/efectivo.png" class="center"/>
+
+    <br>
+    <h2 ion-text style="text-align: center;" color="secondary" >Capital</h2>
+
+  
+    <ion-list>
+        <ion-item-sliding #item *ngFor="let capi of capit | async"  >
+          <ion-item>
+              <ion-grid>
+                  <ion-row>
+                    <ion-col col-2>
+                      <img src="assets/imgs/moneda.png" right/>
+                    </ion-col>  
+                    <ion-col col-3>
+                      <h5>Fecha Registro</h5>
+                    </ion-col>
+                    <ion-col col-3></ion-col>
+                    <ion-col col-3 >
+                      <h5>{{capi.fecha}}</h5>
+                    </ion-col>
+                  </ion-row>  
+                  <ion-row class="no-padding">
+                    <ion-col col-2></ion-col>
+                    <ion-col col-3>
+                      <h5>Cantidad</h5>
+                  </ion-col>
+                  <ion-col col-3></ion-col>
+                  <ion-col col-2>
+                    <h5>${{capi.cantidad}}</h5>
+                  </ion-col>
+                </ion-row> 
+                 
+                </ion-grid>
+          </ion-item>      
+          <ion-item-options side="right">
+              <button ion-button  color="danger" (click)="deleteConfirm(capi)" ><ion-icon name="trash"></ion-icon>
+                Borrar
+             </button>
+             <button ion-button  color="primary"  navPush="EditarconfigPage" [navParams]="{capi:capi}"  ><ion-icon name="create"></ion-icon>
+              Editar
+           </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+
+
+      <ion-fab right bottom>
+            <button ion-fab color="light" (click)="AgregarCapital()"><ion-icon name="add"></ion-icon></button>    
+      </ion-fab>
+
+</ion-content>

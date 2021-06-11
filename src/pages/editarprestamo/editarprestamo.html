@@ -1,0 +1,70 @@
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1></ion-col>
+    
+      <img src="assets/imgs/logo2.png"/>
+     </ion-row>
+  </ion-grid>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<br>
+<ion-content padding>
+      
+  <img src="assets/imgs/dinero2.png" class="center"/>
+
+  <ion-content padding>
+
+   
+  
+    <ion-item>
+      <ion-label fixed>Fecha:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY"  [(ngModel)]="pres.fecha" name="fecha" #fecha="ngModel" required digits></ion-datetime>
+    </ion-item>
+    <div class="form-error" *ngIf="fecha.errors && (fecha.dirty || fecha.touched)">
+      <p color="danger" [hidden]="!fecha.errors.required">Campo requerido.</p>
+    </div>
+
+    <ion-item>
+      <ion-label fixed>Cantidad:</ion-label>
+      <ion-input type="number"  [(ngModel)]="pres.cantidad" required digits name="cantidad" #cantidad="ngModel" required digits></ion-input>
+  </ion-item>
+  <div class="form-error" *ngIf="cantidad.errors && (cantidad.dirty || cantidad.touched)">
+    <p color="danger" [hidden]="!cantidad.errors.required">Campo requerido.</p>
+  </div>
+
+      <ion-item>
+        <ion-label fixed>Cuotas:</ion-label>
+        <ion-input type="number"  [(ngModel)]="pres.cuota" required digits name="cuota" #cuota="ngModel" required digits></ion-input>
+    </ion-item>
+    <div class="form-error" *ngIf="cuota.errors && (cuota.dirty || cuota.touched)">
+      <p color="danger" [hidden]="!cuota.errors.required">Campo requerido.</p>
+    </div>
+
+    <ion-item>
+      <ion-label fixed>Valor Cuotas:</ion-label>
+      <ion-input type="number"  [(ngModel)]="pres.valor" required digits name="valor" #valor="ngModel" required digits ></ion-input>
+    </ion-item>
+    <div class="form-error" *ngIf="valor.errors && (valor.dirty || valor.touched)">
+      <p color="danger" [hidden]="!valor.errors.required">Campo requerido.</p>
+    </div>
+
+    <ion-item>
+      <ion-label fixed>Días de Pago:</ion-label>
+      <ion-input type="text"  [(ngModel)]="pres.dias" required digits name="dias" #dias="ngModel" required digits></ion-input>
+    </ion-item>
+    <div class="form-error" *ngIf="dias.errors && (dias.dirty || dias.touched)">
+      <p color="danger" [hidden]="!dias.errors.required">Campo requerido.</p>
+    </div>
+
+  <button ion-button block clear type="submit" (click)=" editprestamo(pres)" round color="primary" >Guardar</button>
+
+
+
+</ion-content>

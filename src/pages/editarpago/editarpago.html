@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1></ion-col>
+    
+      <img src="assets/imgs/logo2.png"/>
+     </ion-row>
+  </ion-grid>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<br>
+<ion-content padding>
+      
+  <img src="assets/imgs/bank2.png" class="center"/>
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label fixed>Cantidad:</ion-label>
+        <ion-input type="number"  [(ngModel)]="pag.cantidad" name="cantidad" #cantidad="ngModel" required digits ></ion-input>
+    </ion-item>
+    <div class="form-error" *ngIf="cantidad.errors && (cantidad.dirty || cantidad.touched)">
+      <p color="danger" [hidden]="!cantidad.errors.required">Campo requerido.</p>
+    </div>
+
+            <ion-item>
+              <ion-label fixed>Concepto:</ion-label>
+              <ion-select [(ngModel)]="pag.concepto">
+                <ion-option value="intereses">intereses</ion-option>
+                <ion-option value="cuota">cuota</ion-option>
+              </ion-select>
+            </ion-item>
+
+  
+    <ion-item>
+      <ion-label fixed>Fecha:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY"   [(ngModel)]="pag.fecha" name="fecha" #fecha="ngModel" required digits></ion-datetime>
+    </ion-item>
+    <div class="form-error" *ngIf="fecha.errors && (fecha.dirty || fecha.touched)">
+      <p color="danger" [hidden]="!fecha.errors.required">Campo requerido.</p>
+    </div>
+
+
+  <button ion-button block clear type="submit" round color="primary" (click)="editpago(pag)">Guardar</button>
+
+
+
+</ion-content>

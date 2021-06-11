@@ -1,0 +1,75 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1></ion-col>
+    
+      <img src="assets/imgs/logo2.png"/>
+     </ion-row>
+  </ion-grid>
+
+  
+
+  </ion-navbar>
+
+</ion-header>
+
+
+    <ion-content padding>
+      
+      <img src="assets/imgs/user.png" class="center"/>
+
+    <ion-content padding>
+
+        <ion-item>
+            <ion-label fixed>Documento:</ion-label>
+            <ion-input type="number"  [(ngModel)]="item.documento" name="documento" #documento="ngModel" required digits></ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="documento.errors && (documento.dirty || documento.touched)">
+          <p color="danger" [hidden]="!documento.errors.required">Campo requerido.</p>
+        </div>
+    
+        <ion-item>
+          <ion-label fixed>Nombres:</ion-label>
+          <ion-input type="text"  [(ngModel)]="item.nombre" name="nombre" #nombre="ngModel" pattern="[a-zA-Z]*" required></ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="nombre.errors && (nombre.dirty || nombre.touched)">
+          <p color="danger" [hidden]="!nombre.errors.required">Campo requerido.</p>
+          </div> 
+    
+        <ion-item>
+          <ion-label fixed>Apellidos:</ion-label>
+          <ion-input type="text"  [(ngModel)]="item.apellido"  name="apellido" #apellido="ngModel" pattern="[a-zA-Z]*" required></ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="apellido.errors && (apellido.dirty || apellido.touched)">
+          <p color="danger" [hidden]="!apellido.errors.required">Campo requerido.</p>
+          </div>
+    
+        <ion-item>
+          <ion-label fixed>Email:</ion-label>
+          <ion-input type="text" [(ngModel)]="item.email"  name="email" #email="ngModel" ></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label fixed>Telefono:</ion-label>
+          <ion-input type="text"  [(ngModel)]="item.telefono" name="telefono" #telefono="ngModel" required digits></ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="telefono.errors && (telefono.dirty || telefono.touched)">
+          <p color="danger" [hidden]="!telefono.errors.required">Campo requerido.</p>
+        </div>
+    
+        <ion-item>
+          <ion-label fixed>Dirección:</ion-label>
+          <ion-input type="text"  [(ngModel)]="item.direccion" name="direccion" #direccion="ngModel" required></ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="direccion.errors && (direccion.dirty || direccion.touched)">
+          <p color="danger" [hidden]="!direccion.errors.required">Campo requerido.</p>
+      </div>
+   
+      <button ion-button block clear type="submit" round color="primary" (click)=" editcliente(item)">Guardar</button>
+    
+
+    
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+
+    <ion-navbar color="blue">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-1></ion-col>
+      
+        <img src="assets/imgs/logo2.png"/>
+       </ion-row>
+    </ion-grid>
+  
+   
+  
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <h2 ion-text style="text-align: center;" color="secondary" >Clientes Archivados</h2>
+
+    <ion-list>
+        <a ion-item *ngFor="let archi of archivo  | async"  icon-start>
+          <ion-thumbnail item-left>
+            <img src="assets/imgs/archivado.png">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{archi.nombre}}</h2>
+            <p>{{archi.apellido }}</p>
+          </ion-label>
+
+          <ion-toggle item-right  checked="false" (ionChange)="retornarcliente(archi)" ></ion-toggle>
+       
+          
+        </a>
+      </ion-list>
+
+</ion-content>
